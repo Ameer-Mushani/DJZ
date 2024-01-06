@@ -3,7 +3,9 @@ from discord import app_commands
 from dotenv import load_dotenv
 import os
 from typing import Optional
-import youtube_dl
+# Youtube DL is broken now, use youtube_dlp instead.
+# It is a fork so it can be used the same way.
+import yt_dlp as youtube_dl
 import asyncio
 
 # load sercets
