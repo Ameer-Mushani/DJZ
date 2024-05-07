@@ -2,7 +2,6 @@ import discord
 from discord import app_commands
 from dotenv import load_dotenv
 import os
-from typing import Optional
 # Youtube DL is broken now, use youtube_dlp instead.
 # It is a fork so it can be used the same way.
 import yt_dlp as youtube_dl
@@ -93,7 +92,7 @@ async def join(interaction: discord.Interaction):
         await interaction.response.send_message(f"Joining....")
         client.current_voice_channel = await interaction.user.voice.channel.connect()
     else:
-        await interaction.response.send_message("Not currently in a channel!")
+        await interaction.response.send_message("You must be in a voice channel to use this command")
 
 @client.tree.command()
 @app_commands.describe(
@@ -105,6 +104,30 @@ async def play(interaction: discord.Interaction, url: str):
     player = await YTDLSource.from_url(url, stream=True)
     guild = interaction.guild
     guild.voice_client.play(player, after=lambda e: print(f'Player error: {e}') if e else None)
+
+@client.tree.command()
+async def pause(interaction: discord.Interaction):
+    """ Pauses the current audio """
+    if(client.current_voice_channel):
+        if(client.current_voice_channel.is_paused()):
+            await interaction.response.send_message(f"Audio is already paused")
+            return
+        client.current_voice_channel.pause()
+        await interaction.response.send_message(f"Audio paused")
+    else:
+        await interaction.response.send_message("Not currently in a voice channel")
+        
+@client.tree.command()
+async def resume(interaction: discord.Interaction):
+    """ Resumes the current audio """
+    if(client.current_voice_channel):
+        if(client.current_voice_channel.is_paused()):
+            await interaction.response.send_message(f"Resuming audio")
+            client.current_voice_channel.resume()
+        else:
+            await interaction.response.send_message(f"Audio is not currently paused")
+    else:
+        await interaction.response.send_message("Not currently in a voice channel")
 
 @client.tree.command()
 async def stop(interaction: discord.Interaction):
