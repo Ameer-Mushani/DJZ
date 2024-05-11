@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import os
 # Youtube DL is broken now, use youtube_dlp instead.
 # It is a fork so it can be used the same way.
-import yt_dlp as youtube_dl
+import yt_dlp
 import asyncio
 
 # load sercets
@@ -30,7 +30,7 @@ ffmpeg_options = {
     'options': '-vn',
 }
 
-ytdl = youtube_dl.YoutubeDL(ytdl_options)
+ytdl = yt_dlp.YoutubeDL(ytdl_options)
 
 class YTDLSource(discord.PCMVolumeTransformer):
     def __init__(self, source, *, data, volume=0.5):
