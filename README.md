@@ -1,7 +1,6 @@
 # DJ-Z
-This is a bot for Dicord.
-
-It supports playing music via discord slash commands.
+A simple bot for Discord that plays music from YouTube via URL.
+It uses Discord's Application Commands API so users can interact directly through Discord's UI instead of through messages.
 
 ## Setup
 In order to use this bot you need a discord developer account and a bot token.
