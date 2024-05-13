@@ -1,7 +1,8 @@
 # DJ-Z
 A simple bot for Discord that plays music from YouTube via URL.
 It uses Discord's Application Commands API so users can interact directly through Discord's UI instead of through messages.
-You follow my tutorial [here](https://medium.com/@ameermushani/how-to-create-a-music-bot-using-discord-py-and-slash-commands-e3c0a0f92e53) if you'd like to make it from scratch.
+
+You can follow my tutorial [here](https://medium.com/@ameermushani/how-to-create-a-music-bot-using-discord-py-and-slash-commands-e3c0a0f92e53) if you'd like to make it from scratch.
 
 ## Setup
 In order to use this bot you need a discord developer account and a bot token.
